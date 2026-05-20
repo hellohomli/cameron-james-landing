@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cameron James — Trippin'</title>
-<meta name="description" content="Cameron James — Canadian singer, songwriter, and multi-instrumentalist from Kelowna, BC. Signed to 100 Collective Records. New single 'Trippin'' out now." />
+<title>Cameron James — On Time! EP, July 10, 2026</title>
+<meta name="description" content="Cameron James — Canadian singer, songwriter, and multi-instrumentalist from Kelowna, BC. Signed to 100 Collective Records. New EP 'On Time!' arrives July 10, 2026." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.0.45/lenis.min.js"></script>
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
 
 <style>
   :root {
@@ -145,6 +145,80 @@
   .marquee .dot { color: var(--accent); font-style: normal; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+  /* ============ EP ANNOUNCEMENT ============ */
+  .ep-announce {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 2.5rem; position: relative;
+  }
+  .ep-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
+    max-width: 1400px; margin: 0 auto; width: 100%;
+  }
+  .ep-info { order: 1; }
+  .ep-art { aspect-ratio: 1; position: relative; will-change: transform; order: 2; }
+  .ep-art-inner {
+    position: absolute; inset: 0; overflow: hidden;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(245,241,234,0.05);
+  }
+  .ep-info .label { margin-bottom: 2rem; }
+  .ep-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 0.92; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .ep-title em { font-style: italic; color: var(--accent); }
+  .ep-meta {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 2rem;
+  }
+  .ep-desc {
+    font-size: 1.05rem; line-height: 1.6;
+    color: var(--text-muted); max-width: 38ch;
+    margin-bottom: 3rem;
+  }
+  .countdown {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem; padding: 2rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    max-width: 520px;
+  }
+  .cd-unit {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.75rem; position: relative;
+  }
+  .cd-unit:not(:last-child)::after {
+    content: ':'; position: absolute;
+    right: -0.25rem; top: 0.1rem;
+    font-family: var(--serif);
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    color: var(--accent); line-height: 1; opacity: 0.5;
+  }
+  .cd-num {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1; color: var(--text);
+    font-weight: 400; font-variant-numeric: tabular-nums;
+  }
+  .cd-label {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  @media (max-width: 900px) {
+    .ep-announce { padding: 5rem 1.5rem; }
+    .ep-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .ep-info { order: 2; }
+    .ep-art { order: 1; }
+    .countdown { max-width: 100%; }
+  }
+  @media (max-width: 540px) {
+    .cd-num { font-size: clamp(2rem, 9vw, 3rem); }
+    .cd-unit:not(:last-child)::after { right: -0.15rem; }
+  }
+
   /* ============ FEATURED RELEASE ============ */
   .release { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem; position: relative; }
   .release-grid {
@@ -189,7 +263,7 @@
     position: absolute; inset: 0;
     width: 100%; height: 110%;
     object-fit: cover; object-position: center 30%;
-    filter: grayscale(100%) contrast(1.05) brightness(0.7);
+    filter: brightness(0.85);
     will-change: transform;
   }
   .interstitial::after {
@@ -234,7 +308,8 @@
   .stream-card {
     padding: 2.5rem; border: 1px solid var(--line); text-decoration: none; color: var(--text);
     display: flex; flex-direction: column; gap: 3rem; min-height: 260px;
-    justify-content: space-between; transition: all 0.5s var(--ease);
+    justify-content: space-between;
+    transition: border-color 0.4s var(--ease), transform 0.4s var(--ease), background 0.4s var(--ease);
     position: relative; overflow: hidden;
   }
   .stream-card::after {
@@ -311,6 +386,10 @@
   .foot-inner { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
   .foot-mark { font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.04em; }
   .foot-mark em { font-style: italic; color: var(--accent); }
+  .foot-social { display: flex; gap: 1.25rem; align-items: center; }
+  .foot-social a { color: var(--text-muted); display: inline-flex; transition: color 0.3s var(--ease); }
+  .foot-social a:hover { color: var(--accent); }
+  .foot-social svg { width: 22px; height: 22px; }
   .foot-contact { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
   .foot-contact .k { color: var(--text-faint); margin-bottom: 0.5rem; display: block; }
   .foot-contact a { color: var(--text); text-decoration: none; transition: color 0.3s var(--ease); }
@@ -326,6 +405,7 @@
 <nav>
   <div class="mark"><em>CJ</em></div>
   <div class="links">
+    <a href="#ep">EP</a>
     <a href="#release">Release</a>
     <a href="#bio">About</a>
     <a href="#stream">Listen</a>
@@ -337,7 +417,7 @@
 <section class="hero">
   <div class="hero-text">
     <div class="hero-top">
-      <div class="hero-tag label">New Single · Out Now</div>
+      <div class="hero-tag label">New EP · July 10, 2026</div>
       <h1 class="hero-name">
         <span class="word"><span>Cameron</span></span>
         <span class="word"><span><em>James</em></span></span>
@@ -371,16 +451,39 @@
 <!-- ============ MARQUEE ============ -->
 <div class="marquee">
   <div class="marquee-track">
+    <span><em>On Time!</em></span>
+    <span>July 10 <span class="dot">◆</span></span>
     <span>Trippin' <span class="dot">◆</span></span>
     <span><em>Out Now</em></span>
-    <span>Trippin' <span class="dot">◆</span></span>
-    <span><em>Out Now</em></span>
-    <span>Trippin' <span class="dot">◆</span></span>
-    <span><em>Out Now</em></span>
+    <span><em>On Time!</em></span>
+    <span>July 10 <span class="dot">◆</span></span>
     <span>Trippin' <span class="dot">◆</span></span>
     <span><em>Out Now</em></span>
   </div>
 </div>
+
+<!-- ============ EP ANNOUNCEMENT ============ -->
+<section class="ep-announce" id="ep">
+  <div class="ep-grid">
+    <div class="ep-info">
+      <div class="label">Forthcoming EP</div>
+      <h2 class="ep-title"><em>On Time!</em></h2>
+      <div class="ep-meta">100 Collective Records · July 10, 2026</div>
+      <p class="ep-desc">The next chapter from Cameron James. <em>On Time!</em> arrives this summer — patient, precise, and worth the wait.</p>
+      <div class="countdown" id="countdown" aria-label="Countdown to On Time! EP release">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Hrs</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-minutes">--</span><span class="cd-label">Min</span></div>
+        <div class="cd-unit"><span class="cd-num" id="cd-seconds">--</span><span class="cd-label">Sec</span></div>
+      </div>
+    </div>
+    <div class="ep-art">
+      <div class="ep-art-inner">
+        <img class="cover-img" src="on-time-cover.jpg" alt="On Time! — Cameron James EP cover art" />
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ FEATURED RELEASE ============ -->
 <section class="release" id="release">
@@ -391,7 +494,7 @@
       </div>
     </div>
     <div class="release-info">
-      <div class="label">New Single</div>
+      <div class="label">Latest Single</div>
       <h2 class="release-title"><em>Trippin'</em></h2>
       <div class="release-meta">With 40k · 100 Collective Records · 2026</div>
       <p class="release-desc">Two minutes and twenty-five seconds of slow-burning confidence. <em>Trippin'</em> finds Cameron in conversation with frequent collaborator 40k — a track built for late drives and lower lights.</p>
@@ -411,10 +514,10 @@
 
 <!-- ============ B&W INTERSTITIAL ============ -->
 <section class="interstitial">
-  <img src="live-performance.jpg" alt="Cameron James — in studio" />
+  <img src="cj-sticker.jpg" alt="Cameron James — promo" />
   <div class="interstitial-quote">
     <div class="label">In the Room</div>
-    <p>Over 100k streams on <em>Just Say</em>, <em>Lotus</em>, and <em>Mind Games</em> — built one session at a time.</p>
+    <p>Over 100k streams on <em>Just Say</em>, <em>Lotus</em>, and <em>Mind Games</em>.</p>
     <cite>— Est. a decade in</cite>
   </div>
 </section>
@@ -468,8 +571,8 @@
   <div class="label">Keep Up</div>
   <h2>Follow the <em>slow burn</em>.</h2>
   <div class="social-grid">
-    <a href="https://instagram.com/cameron.james" target="_blank" rel="noopener">
-      <span class="handle">@cameron.james</span>
+    <a href="https://www.instagram.com/cameron.jamesss/" target="_blank" rel="noopener">
+      <span class="handle">@cameron.jamesss</span>
       <span class="plat"><em>Instagram</em></span>
       <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12L12 4M12 4H6M12 4v6"/></svg>
     </a>
@@ -481,7 +584,8 @@
   </div>
 </section>
 
-<!-- ============ MAILING LIST ============ -->
+<!-- ============ MAILING LIST (hidden — uncomment to re-enable) ============ -->
+<!--
 <section class="mailing">
   <div class="mailing-inner">
     <div class="label">Direct Line</div>
@@ -493,11 +597,27 @@
     </div>
   </div>
 </section>
+-->
 
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="foot-inner">
     <div class="foot-mark"><em>Cameron James</em></div>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/cameron.jamesss/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/@cameronjames_" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="3"/>
+          <path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+    </div>
     <div class="foot-contact">
       <span class="k">Booking · Press</span>
       <a href="mailto:100collectiverecords@gmail.com">100collectiverecords@gmail.com</a>
@@ -510,13 +630,16 @@
 </footer>
 
 <script>
+  gsap.registerPlugin(ScrollTrigger);
+
   const lenis = new Lenis({
     duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smoothWheel: true, smoothTouch: false,
   });
-  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
+
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
 
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
@@ -525,9 +648,36 @@
     });
   });
 
-  gsap.registerPlugin(ScrollTrigger);
-  lenis.on('scroll', ScrollTrigger.update);
+  /* ============ COUNTDOWN ============ */
+  // EP releases at midnight Pacific Time on July 10, 2026
+  const releaseDate = new Date('2026-07-10T00:00:00-07:00').getTime();
+  const cdDays = document.getElementById('cd-days');
+  const cdHours = document.getElementById('cd-hours');
+  const cdMinutes = document.getElementById('cd-minutes');
+  const cdSeconds = document.getElementById('cd-seconds');
+  function updateCountdown() {
+    if (!cdDays) return;
+    const diff = releaseDate - Date.now();
+    if (diff <= 0) {
+      cdDays.textContent = '00';
+      cdHours.textContent = '00';
+      cdMinutes.textContent = '00';
+      cdSeconds.textContent = '00';
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    cdDays.textContent = String(days).padStart(2, '0');
+    cdHours.textContent = String(hours).padStart(2, '0');
+    cdMinutes.textContent = String(minutes).padStart(2, '0');
+    cdSeconds.textContent = String(seconds).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 
+  /* ============ HERO ANIMATIONS ============ */
   const heroTL = gsap.timeline({ defaults: { ease: 'power3.out' } });
   heroTL
     .from('.hero-tag', { opacity: 0, y: 12, duration: 1 }, 0.2)
@@ -545,6 +695,21 @@
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
   });
 
+  /* ============ EP ANNOUNCEMENT ANIMATIONS ============ */
+  gsap.from('.ep-art', {
+    scale: 0.85, opacity: 0, y: 60, ease: 'power3.out', duration: 1.2,
+    scrollTrigger: { trigger: '.ep-announce', start: 'top 75%', end: 'top 30%', scrub: 0.8 }
+  });
+  gsap.from('.ep-info > *', {
+    y: 40, opacity: 0, stagger: 0.12, ease: 'power3.out', duration: 1,
+    scrollTrigger: { trigger: '.ep-announce', start: 'top 60%' }
+  });
+  gsap.to('.ep-art', {
+    y: -50, ease: 'none',
+    scrollTrigger: { trigger: '.ep-announce', start: 'top bottom', end: 'bottom top', scrub: 1 }
+  });
+
+  /* ============ TRIPPIN' RELEASE ANIMATIONS ============ */
   gsap.from('.release-art', {
     scale: 0.85, opacity: 0, y: 60, ease: 'power3.out', duration: 1.2,
     scrollTrigger: { trigger: '.release', start: 'top 75%', end: 'top 30%', scrub: 0.8 }
@@ -570,9 +735,9 @@
   const bio = document.getElementById('bioText');
   const bioHTML = bio.innerHTML;
   const wrapWords = (html) => {
-    return html.replace(/(<[^>]+>|[^<\s]+)(\s+|$)/g, (match, word, space) => {
-      if (word.startsWith('<')) return word + space;
-      return `<span class="word-reveal">${word}</span>${space}`;
+    return html.replace(/(<[^>]+>)|([^\s<]+)/g, (match, tag, word) => {
+      if (tag) return tag;
+      return `<span class="word-reveal">${word}</span>`;
     });
   };
   bio.innerHTML = wrapWords(bioHTML);
@@ -588,9 +753,10 @@
     y: 40, opacity: 0, stagger: 0.1, duration: 1, ease: 'power3.out',
     scrollTrigger: { trigger: '.stream', start: 'top 70%' }
   });
+  // Cards animate in on load (avoids ScrollTrigger edge cases with Lenis)
   gsap.from('.stream-card', {
     y: 60, opacity: 0, stagger: 0.15, duration: 1, ease: 'power3.out',
-    scrollTrigger: { trigger: '.stream-grid', start: 'top 75%' }
+    delay: 0.4
   });
   document.querySelectorAll('[data-hover]').forEach(card => {
     card.addEventListener('mousemove', (e) => {
