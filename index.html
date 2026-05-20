@@ -50,12 +50,12 @@
     position: fixed; top: 0; left: 0; right: 0;
     padding: 1.75rem 2.5rem;
     display: flex; justify-content: space-between; align-items: center;
-    z-index: 50; mix-blend-mode: difference;
+    z-index: 50;
   }
-  nav .mark { font-family: var(--serif); font-size: 1.25rem; letter-spacing: 0.04em; color: var(--text); }
+  nav .mark { font-family: var(--serif); font-size: 1.25rem; letter-spacing: 0.04em; color: var(--text); text-shadow: 0 1px 6px rgba(0,0,0,0.7); }
   nav .mark em { font-style: italic; color: var(--accent); }
   nav .links { display: flex; gap: 2rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  nav .links a { color: var(--text); text-decoration: none; opacity: 0.7; transition: opacity 0.3s var(--ease); }
+  nav .links a { color: var(--text); text-decoration: none; opacity: 0.7; transition: opacity 0.3s var(--ease); text-shadow: 0 1px 6px rgba(0,0,0,0.7); }
   nav .links a:hover { opacity: 1; }
   @media (max-width: 720px) { nav { padding: 1.25rem 1.5rem; } nav .links { display: none; } }
 
@@ -440,7 +440,7 @@
     </div>
   </div>
   <div class="hero-image">
-    <img src="hero-portrait.jpg" alt="Cameron James — portrait" />
+    <img src="cj-sticker.jpg" alt="Cameron James — portrait" />
   </div>
   <div class="scroll-hint">
     <span class="line"></span>
@@ -514,7 +514,7 @@
 
 <!-- ============ B&W INTERSTITIAL ============ -->
 <section class="interstitial">
-  <img src="cj-sticker.jpg" alt="Cameron James — promo" />
+  <img src="hero-portrait.jpg" alt="Cameron James — promo" />
   <div class="interstitial-quote">
     <div class="label">In the Room</div>
     <p>Over 100k streams on <em>Just Say</em>, <em>Lotus</em>, and <em>Mind Games</em>.</p>
